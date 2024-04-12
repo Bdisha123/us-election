@@ -1,0 +1,487 @@
+/************ Default Css ************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+
+body {
+  font-weight: 400;
+  overflow-x: hidden;
+  position: relative;
+  background-color: #000000 !important;
+  color: #fff !important;
+  font-family: 'Centra', sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+}
+
+p,
+a,
+li,
+button,
+ul {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+button {
+  border: 0;
+  background-color: transparent;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+@media (min-width:1700px) {
+  main .container {
+    max-width: 100%;
+    padding: 0 150px;
+  }
+}
+
+p.success {
+  color: green;
+}
+
+p.danger {
+  color: red;
+}
+
+/************ Navbar Css ************/
+nav.navbar {
+  padding: 18px 0;
+  /* background-color: #480da6; */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+  transition: 0.32s ease-in-out;
+}
+
+.ms-auto {
+  margin-left: 120vh;
+}
+
+nav.navbar.scrolled {
+  padding: 0px 0;
+  background-color: #0d0d0d;
+}
+
+nav.navbar a.navbar-brand {
+  width: 9%;
+
+}
+
+nav.navbar .navbar-nav .nav-link.navbar-link {
+  font-weight: 400;
+  color: #fff !important;
+  letter-spacing: 0.8px;
+  padding: 0 25px;
+  font-size: 18px;
+  opacity: 0.75;
+  margin-left: 100px;
+}
+
+nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
+nav.navbar .navbar-nav a.nav-link.navbar-link.active {
+  opacity: 1;
+}
+
+span.navbar-text {
+  display: flex;
+  align-items: center;
+}
+
+
+.navbar-text button {
+  font-weight: 700;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 18px 34px;
+  font-size: 18px;
+  margin-left: 158vh;
+  position: relative;
+  background-color: transparent;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-text button span {
+  z-index: 1;
+}
+
+.navbar-text button::before {
+  content: "";
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  background-color: #fff;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-text button:hover {
+  color: #121212;
+}
+
+.navbar-text button:hover::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+nav.navbar .navbar-toggler:active,
+nav.navbar .navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+nav.navbar .navbar-toggler-icon {
+  width: 24px;
+  height: 17px;
+  background-image: none;
+  position: relative;
+  border-bottom: 2px solid #fff;
+  transition: all 300ms linear;
+  top: -2px;
+}
+
+nav.navbar .navbar-toggler-icon:focus {
+  border-bottom: 2px solid #fff;
+}
+
+nav.navbar .navbar-toggler-icon:after,
+nav.navbar .navbar-toggler-icon:before {
+  width: 24px;
+  position: absolute;
+  height: 2px;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  content: '';
+  z-index: 2;
+  transition: all 300ms linear;
+}
+
+nav.navbar .navbar-toggler-icon:after {
+  top: 8px;
+}
+
+nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
+  transform: rotate(45deg);
+  background-color: #fff;
+  height: 2px;
+}
+
+nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
+  transform: translateY(8px) rotate(-45deg);
+  background-color: #fff;
+  height: 2px;
+}
+
+nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+  border-color: transparent;
+}
+
+/************ Banner Css ************/
+.banner {
+  margin-top: 0;
+  padding: 260px 0 100px 50px;
+  background-image: url('./images/flag2.webp');
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.banner .tagline {
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 40px;
+  margin-bottom: 50px;
+  display: inline-block;
+}
+
+.banner h1 {
+  font-size: 55px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.banner p {
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  width: 96%;
+}
+
+.banner button {
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 60px;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+}
+
+.banner button svg {
+  font-size: 25px;
+  margin-left: 10px;
+  transition: 0.3s ease-in-out;
+  line-height: 1;
+}
+
+.banner button:hover svg {
+  margin-left: 25px;
+}
+
+.banner img {
+  height: 250px;
+  color: #fff;
+  animation: updown 3s linear infinite;
+  margin-left: 80vh;
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(-20px);
+  }
+
+  50% {
+    transform: translateY(20px);
+  }
+
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+.txt-rotate>.wrap {
+  border-right: 0.08em solid #666;
+}
+
+.compare {
+  background: linear-gradient(90.21deg, #73194f -5.91%, #4A2FBD 111.58%);
+  padding: 60px 0 200px 0;
+
+}
+
+.compare h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.compare h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.compare .class1 {
+  margin-top: 40px;
+  margin-bottom: 150px;
+}
+.compare .class2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 150px;
+}
+
+.compare .class3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.compare .class4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.container-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.class3,
+.class4 {
+  width: 48%; /* Adjust as needed */
+}
+.form-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-image: url('./images/flag2.webp'); */
+  background-color: (90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
+}
+
+.home-container {
+  width: 60%;
+  margin: 120px auto;
+  padding: 20px;
+  /* background: linear-gradient(90.21deg, rgba(245, 245, 245, 0.5) -5.91%, rgba(140, 16, 129, 0.5) 111.58%); */
+  border-radius: 10px;
+  box-shadow: 0 0 35px rgba(173, 99, 252);
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+  height: 400px; /* Fixed height */
+  overflow: auto; /* Add overflow to enable scrolling if content exceeds height */
+}
+
+
+.home-container .result-container {
+  margin-top: 20px;
+  color: #eac7c7;
+  justify-content: center;
+}
+
+.home-container h2 {
+  font-size: 28px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.home-container select {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+
+.home-container .option-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-container .option-container:hover {
+  background-color: #f0f0f0;
+  transition:  0.3s ease;
+}
+
+.home-container .option-container h3 {
+  font-size: 24px;
+  color: #333333;
+  margin-right: 10px;
+}
+
+.home-container .option-container img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+.more-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+}
+
+.more-container .class1,
+.more-container .class2 {
+  width: 45%;
+  padding: 20px;
+  background-color: #000000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(157, 85, 238, 0.5);
+  margin-bottom: 20px;
+}
+
+.more-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #7d2ae8;
+}
+
+.more-container .select-container {
+  margin-bottom: 20px;
+}
+
+.more-container select {
+  width:50%;
+  padding: 10px 10px 10px 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.more-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #d0b9ff;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.more-container button:hover {
+  background-color: #dbb1ec;
+}
+
+.more-container p {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #ceb9e9;
+}
