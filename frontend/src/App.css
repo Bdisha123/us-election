@@ -435,7 +435,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .more-container .class1,
-.more-container .class2 {
+.more-container .class2,
+.more-container .class3 {
   width: 45%;
   padding: 20px;
   background-color: #000000;

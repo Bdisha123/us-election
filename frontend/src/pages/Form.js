@@ -1,33 +1,46 @@
-import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Form = () => {
-    //const navigate = useNavigate(); // Initialize useNavigate
     const [selectedYear, setSelectedYear] = useState('');
+    const [selectedState, setSelectedState] = useState('');
     const [winner, setWinner] = useState('');
     const [totalVotes, setTotalVotes] = useState(0);
     const [partyVotes, setPartyVotes] = useState([]);
     const [winningCandidates, setWinningCandidates] = useState([]);
 
-    // Function to handle year selection
+    useEffect(() => {
+        if (selectedYear && selectedState) {
+            fetchData(selectedYear, selectedState);
+        }
+    }, [selectedYear, selectedState]);
+
     const handleYearChange = (event) => {
-        const selectedYear = event.target.value;
-        // You can implement logic to fetch data based on the selected year here
-        // For now, let's just set some dummy data
-        setSelectedYear(selectedYear);
-        setWinner('Sample Party');
-        setTotalVotes(1000);
-        setPartyVotes([
-            { party: 'Sample Party', votes: 700 },
-            { party: 'Opposition Party', votes: 300 }
-        ]);
-        setWinningCandidates(['Candidate 1', 'Candidate 2']);
-        // Use navigate to navigate to the same page with the selected year as a query parameter
-        // navigate(`?year=${selectedYear}`);
+        setSelectedYear(event.target.value);
     };
 
-    // Generate options for years from 1976 to 2020
+    const handleStateChange = (event) => {
+        setSelectedState(event.target.value);
+    };
+
+    const fetchData = async (year, state) => {
+        try {
+            const res = await axios.get(`http://localhost:8800/form?year=${year}&state=${state}`);
+            const data = res.data;
+            setWinner(data.party_simplified);
+            setTotalVotes(data.totalvotes);
+            setPartyVotes([
+                { party: data.party_simplified, votes: data.candidatevotes },
+                // { party: 'Opposition Party', votes: data.totalvotes - data.candidatevotes }
+            ]);
+            setWinningCandidates([data.candidate]);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            // Handle error if necessary
+        }
+    };
+
     const yearOptions = [];
     for (let year = 1976; year <= 2020; year += 4) {
         yearOptions.push(
@@ -37,30 +50,34 @@ const Form = () => {
         );
     }
 
-    // If year is not selected, render welcome message
-    if (!selectedYear) {
-        return (
-            <div className="home-container">
-                <h2>Welcome... Select your year</h2>
-                <select value={selectedYear} onChange={handleYearChange}>
-                    <option value="">Select Year</option>
-                    {yearOptions}
-                </select>
-            </div>
-        );
-    }
+    const stateOptions = [
+        'ALABAMA', 'ALASKA', 'ARIZONA', 'ARKANSAS', 'CALIFORNIA', 'COLORADO', 'CONNECTICUT', 'DELAWARE',
+        'DISTRICT OF COLUMBIA', 'FLORIDA', 'GEORGIA', 'HAWAII', 'IDAHO', 'ILLINOIS', 'INDIANA', 'IOWA',
+        'KANSAS', 'KENTUCKY', 'LOUISIANA', 'MAINE', 'MARYLAND', 'MASSACHUSETTS', 'MICHIGAN', 'MINNESOTA',
+        'MISSISSIPPI', 'MISSOURI', 'MONTANA', 'NEBRASKA', 'NEVADA', 'NEW HAMPSHIRE', 'NEW JERSEY', 'NEW MEXICO',
+        'NEW YORK', 'NORTH CAROLINA', 'NORTH DAKOTA', 'OHIO', 'OKLAHOMA', 'OREGON', 'PENNSYLVANIA', 'RHODE ISLAND',
+        'SOUTH CAROLINA', 'SOUTH DAKOTA', 'TENNESSEE', 'TEXAS', 'UTAH', 'VERMONT', 'VIRGINIA', 'WASHINGTON',
+        'WEST VIRGINIA', 'WISCONSIN', 'WYOMING'
+    ];
 
-    // If year is selected, render election results
     return (
         <div className="form-container">
             <div className="home-container">
-                <h2>Select a Year</h2>
+                <h2>Select a Year and State</h2>
                 <select value={selectedYear} onChange={handleYearChange}>
                     <option value="">Select Year</option>
                     {yearOptions}
                 </select>
+                <select value={selectedState} onChange={handleStateChange}>
+                    <option value="">Select State</option>
+                    {stateOptions.map((state, index) => (
+                        <option key={index} value={state}>
+                            {state}
+                        </option>
+                    ))}
+                </select>
                 <div className="result-container">
-                    <h3>Results for {selectedYear}</h3>
+                    <h3>Results for {selectedYear} in {selectedState}</h3>
                     <p>Winner: {winner}</p>
                     <p>Total Votes: {totalVotes}</p>
                     <div>
@@ -83,7 +100,6 @@ const Form = () => {
                     </div>
                 </div>
             </div>
-            
         </div>
     );
 };
